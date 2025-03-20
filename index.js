@@ -22,14 +22,6 @@ mongoose.connect(process.env.MONGO_URI, {
     .then(() => console.log('Connected to MongoDB Atlas'))
     .catch((err) => console.error('Error connecting to MongoDB:', err));
 
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'yeghobropro@gmail.com',
-        pass: '28111981Mdyy'  
-    }
-});
-
 app.post('/submit', async (req, res) => {
     const userName = req.body.username;
     const userEmail = req.body.email;
@@ -45,13 +37,6 @@ app.post('/submit', async (req, res) => {
         email: userEmail,
         message: userMessage
     });
-
-    // await transporter.sendMail({
-    //     from: '"Yeghishes portfolio" <yeghobropro@gmail.com>',
-    //     to: "yeghishehak08@gmail.com", // Where you want to receive notifications
-    //     subject: "New User Message Received",
-    //     text: `Someone sent you a message from your portfolio: Username: ${userName}, Email: ${userEmail}, Message: ${userMessage}`
-    // });
 
     console.log('Message sent successfully');
     res.redirect('/');
