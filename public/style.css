@@ -589,9 +589,6 @@ label {
 
 
 @media(max-width: 548px) {
-    body {
-        overflow-x: auto;
-    }
     .containerContact {
         opacity: 0;
         filter: blur(0);
@@ -613,6 +610,12 @@ label {
     .containerContact {
         display: flex;
         justify-content: flex-start !important;
+    }
+}
+
+@media(max-width: 518px) {
+    body {
+        overflow-x: auto;
     }
 }
 
