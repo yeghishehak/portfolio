@@ -23,6 +23,46 @@ contact.addEventListener("click", function() {
     contactMeText.scrollIntoView({behavior: "smooth"})
 })
 
+const header = document.querySelector(".header")
+const menuBtn = document.querySelector(".menuBtn")
+const buttonClass = document.querySelectorAll(".button")
+const menuContainer = document.querySelector(".menuContainer")
+
+menuBtn.addEventListener("click", function() {
+    if (header.style.height === "100vh") {
+        document.body.style.backgroundColor = "unset"
+        header.style.height = "55px"; 
+        buttonClass.forEach(function(button) {
+            button.style.display = "none"; 
+        });
+    }
+
+    
+    
+    else {
+        document.body.style.backgroundColor = "#333"
+        header.style.height = "100vh"
+        buttonClass.forEach(function(button) {
+            button.style.display = "block";
+        });
+
+        menuContainer.style.marginLeft = "60%"
+        menuContainer.style.transform = "translate(10px, 18px)"
+        menuContainer.style.flexDirection = "column"
+    }
+
+    buttonClass.forEach(function(button) {
+        button.addEventListener("click", function() {
+            document.body.style.backgroundColor = "unset"
+            header.style.height = "55px"; 
+            buttonClass.forEach(function(button) {
+                button.style.display = "none"; 
+            });
+        });
+    });
+})
+
+
 const explore = document.querySelector(".explore");
 
 explore.addEventListener("click", function(event) {
