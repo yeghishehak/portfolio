@@ -22,6 +22,10 @@ mongoose.connect(process.env.MONGO_URI, {
     .then(() => console.log('Connected to MongoDB Atlas'))
     .catch((err) => console.error('Error connecting to MongoDB:', err));
 
+app.get('/resume', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Yeghishe\'s Portfolio.pdf'));
+});
+
 app.post('/submit', async (req, res) => {
     const userName = req.body.username;
     const userEmail = req.body.email;

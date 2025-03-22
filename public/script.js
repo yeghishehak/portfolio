@@ -46,8 +46,8 @@ menuBtn.addEventListener("click", function() {
             button.style.display = "block";
         });
 
-        menuContainer.style.marginLeft = "60%"
-        menuContainer.style.transform = "translate(10px, 18px)"
+        menuContainer.style.marginLeft = "100%"
+        menuContainer.style.transform = "translate(-55px, 18px)"
         menuContainer.style.flexDirection = "column"
     }
 

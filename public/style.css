@@ -65,7 +65,7 @@ header h1 {
     gap: 20px;
 }
 
-.menuContainer button {
+.menuContainer .button {
     color:#00bfff;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: 700;
@@ -77,12 +77,25 @@ header h1 {
     cursor: pointer;
 }
 
+.resume{
+    all: unset;
+}
+
 .menuBtn {
+    color:#00bfff;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    font-size: large;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
     display: none;
     transform: translate(20px, -2px) scale(2);
 }
 
-@media (max-width: 554px) {
+@media (max-width: 640px) {
     .menuBtn {
         display: flex;
         justify-content: flex-end;
@@ -93,7 +106,7 @@ header h1 {
     }
 }
 
-.menuContainer button::before {
+.menuContainer .button::before {
     content: '';
     display: block;
     position: relative;
@@ -106,12 +119,12 @@ header h1 {
     transform: scaleX(0);
 }
 
-.menuContainer button:hover::before {
+.menuContainer .button:hover::before {
     transform: scaleX(1);
     background-color: #ADD8E6;
 }
 
-.menuContainer button:hover {
+.menuContainer .button:hover {
     color: #ADD8E6;
 }
 .welcome {
