@@ -42,7 +42,24 @@ app.post('/submit', async (req, res) => {
         message: userMessage
     });
 
-    console.log('Message sent successfully');
+    console.log('Message sent to database successfully');
+
+    const transporter = nodemailer.createTransport({
+        service: 'gmail', // SMTP server for Mail.ru
+        auth: {
+          user: process.env.EMAIL,
+          pass: process.env.PASSWORD,
+        },
+      });
+
+        await transporter.sendMail ({
+            from: process.env.EMAIL,
+            to: process.env.EMAIL,
+            subject: 'Message from portfolio',
+            html: 
+            `<h1>Someone sent you a message from "Yeghishe's Portfolio".</h1> 
+            <p>Name: <b>${userName}</b>, <br> Email: <b>${userEmail}</b>, <br> Message: <b>${userMessage}</b></p>`
+        })
     res.redirect('/');
 } 
 catch (error) {
