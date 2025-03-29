@@ -23,7 +23,7 @@ mongoose.connect(process.env.MONGO_URI, {
     .catch((err) => console.error('Error connecting to MongoDB:', err));
 
 app.get('/resume', (req, res) => {
-    res.sendFile(path.join(__dirname, 'Yeghishe\'s Portfolio.pdf'));
+    res.sendFile(path.join(__dirname, 'Yeghishe\'s Resume.pdf'));
 });
 
 app.post('/submit', async (req, res) => {
