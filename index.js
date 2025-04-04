@@ -79,6 +79,10 @@ app.get('/', (req, res) => {
 //   .catch(error => console.log("Fetch error:", error));
 
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'wrongpage.html'));
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on port http://localhost:${PORT}/`);
 });
