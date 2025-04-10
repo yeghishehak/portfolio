@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Yeghishe's Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Fugaz+One&family=Mitr:wght@200;300;400;500;600;700&family=Paytone+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rowdies:wght@300;400;700&family=Sriracha&family=Ysabeau+SC:wght@1..1000&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <h1>Yeghishe</h1>
+        <nav>
+            <div class="menuContainer">
+                <button class="menuBtn">☰</button>
+            
+                <button class="home button">Home</button>
+                <button class="about button">About</button>
+                <button class="project button">Projects</button>
+                <button class="contact button">Contact</button>
+                <a href="/resume" download="Yeghishe's Resume.pdf" class="resume button">Resume</a>
+                
+            </div>
+        </nav>
+    </header>
+
+    <section class="top-section">
+        <h1 class="welcome">Welcome to my portfolio</h1>
+        <p>My name is Yeghishe and I am a web developer</p>
+        <button class="explore">Explore</button>
+    </section>
+
+    <section>
+        <h2 class="aboutMeText">About Me</h2>
+        <div class="about-me container">
+            <div class="about-me_1">
+                <h3>Meet Yeghishe</h3>
+                <p>A professional web developer learned Frontend and Backend development together</p>
+            </div>
+            <div class="about-me_1">
+                <h3>Knowledge</h3>
+                <p>A good knowledge of HTML, CSS, JavaScript, Node.js, React.js, Next.js and MongoDB</p>
+            </div>
+            <div class="about-me_1">
+                <h3>Extra</h3>
+                <p>Have a good knowledge of GitHub, Vercel, and tools like Git</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects">
+        <div class="projectHeading">
+            <h1 class="myProjectText">My Project</h1>
+            <h2 class="projectsText">Projects</h2>
+            <p class="projectP">My project showcases feature user-friendly and responsive websites. They are designed to be attractive, professional, and completed within a short timeframe. Each project reflects my ability to create high-quality designs with efficiency and precision.</p>        
+        </div>
+        <div class="images">
+            <div class="containerImages containerImage1">
+                <a href="https://yeghishehak.github.io/Login/" target="_blank">
+                    <img src="/images/Screenshot 2025-03-18 233935.png" alt="Login Page" class="image image1">
+                </a>
+                <h1>Log In Page</h1>
+                <p class="GT1">A responsive login page built with React.js and CSS, showcasing advanced CSS skills. I also developed a version using Node.js and MongoDB, which I will be publishing online soon. The design is fully optimized for different screen sizes, ensuring a smooth user experience across devices.</p>
+                <a href="https://yeghishehak.github.io/Login/" target="_blank"><button class="bottomExplore1">Explore</button></a>
+            </div>
+            <div class="containerImages containerImage2">
+                <a href="https://cryptoacademy.vercel.app/" target="_blank">
+                    <img src="/images/Screenshot 2025-03-18 233952.png" alt="Crypto Page" class="image image2">
+                </a>
+                <h1>Crypto Page</h1>
+                <p class="GT2">A responsive cryptocurrency page built with Next.js and CSS, featuring real-time data and seamless navigation. It is fully optimized for all screen sizes and includes a feature that redirects users to a new page if an incorrect URL is entered.</p>
+                <a href="https://cryptoacademy.vercel.app/" target="_blank"><button class="bottomExplore2">Explore</button></a>
+            </div>
+            <div class="containerImages containerImage3">
+                <a href="https://yeghishehak.github.io/ButtonLiveWallpaper/" target="_blank">
+                    <img src="/images/Screenshot 2025-03-18 234115.png" alt="Button Wallpaper Page" class="image image3">
+                </a>
+                <h1>Button Wallpaper Page</h1>
+                <p class="GT3">A responsive button wallpaper page built with HTML, CSS, and JavaScript for all computers. It features a unique design that allows users to interact with the button and change the wallpaper.</p>
+                <a href="https://yeghishehak.github.io/ButtonLiveWallpaper/" target="_blank"><button class="bottomExplore3">Explore</button></a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="containerContact">
+            <div class="contactHeading">
+                <h1 class="getInTouch">Get in touch</h1>
+                <h2 class="contactMeText">Contact Me</h2>
+                <div class="containerInput">
+                    <form action="/submit" method="POST">
+                        <label for="username">Your name</label>
+                        <input type="text" class="nameInput" placeholder="What is your name?" name="username" id="username" required>
+
+                        <label for="email">Your email</label>
+                        <input type="email" class="emailInput" placeholder="Email" name="email" id="email" required>
+
+                        <label for="message">Your message</label>
+                        <textarea class="messageTextarea" placeholder="What you want to say?" name="message" id="message" required></textarea>
+                        
+                        <button class="sendMessage" type="submit">Send</button>
+                    </form>
+                </div> 
+            </div>
+        </div>
+
+        <div class="computerDiv">
+            <img src="/images/free-icon-programming-15775218.png" alt="Computer" class="computerImage">
+        </div> 
+
+        <div class="nodeDiv">
+            <img src="/images/free-icon-nodejs-15380914.png" alt="Node.js" class="nodeImage">
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <h1>About</h1>
+            <p class="footer-text">
+                A professional web developer, specializing in functional, adaptive, and visually appealing websites using 
+                HTML, CSS, JavaScript, React, and Node.js. I've built multiple projects and deployed them on GitHub and Vercel. 
+                Recently, I started learning MongoDB for database management and exploring Express.js to strengthen my backend 
+                development skills. Additionally, I'm interested in UX/UI design and aim to expand my expertise in this field 
+                while continuing to grow as a full-stack developer.
+            </p>
+            <h2>Yeghishe</h2>
+            <p>All rights reserved &copy; 2025</p>
+        </div>
+    </footer>
+</body>
+</html>
