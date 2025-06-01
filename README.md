@@ -1,1 +1,1 @@
-"Portfolio originally built: March 2024 — Continuously updated."
+"Portfolio originally built: December 2024 — Continuously updated."
