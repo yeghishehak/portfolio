@@ -276,7 +276,7 @@ header h1 {
     filter: blur(5px);
     opacity: 0;
     width: 400px;
-    height: 300px;
+    min-height: 300px;
     background: linear-gradient(var(--angle), yellow, rgb(255, 187, 0));
     border-radius: 40px;
     box-shadow: 0px 10px 20px black;
@@ -379,7 +379,6 @@ header h1 {
     justify-content: center;
     gap: 100px;
     flex-wrap: wrap;
-    margin-top: 70px;
 }
 
 .image {
@@ -387,7 +386,6 @@ header h1 {
     height: 170px;
     border-radius: 20px;
     box-shadow: 0px 5px 20px black;
-    transform: translate(25px, 20px);
 }
 
 .containerImages {
@@ -395,13 +393,36 @@ header h1 {
     filter: blur(10px);
     opacity: 0;
     width: 350px;
-    height: 500px;
+    min-height: 500px;
     background: linear-gradient(var(--angle), rgb(0, 174, 255), aqua);
     border-radius: 30px;
     transition: all 0.5s ease;
     animation: gradient 5s linear infinite;
 }
 
+.containerImages p {
+    transform: translate(0, -20px);
+}
+
+
+@media (max-width: 344px) {
+    .containerImages {
+        width: 100%;
+    }
+
+    .image {
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+.containerImage1, .containerImage2, .containerImage3, .containerImage4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 .containerImages:hover {
     transform: translate(0, 0) scale(1.03);
@@ -431,7 +452,6 @@ header h1 {
     font-weight: 600;
     color: rgb(14, 14, 14);
     text-align: center;
-    transform: translate(0, 20px);
     transition: all 0.3s ease;
 }
 
@@ -440,13 +460,10 @@ header h1 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: rgb(14, 14, 14);
     text-align: center;
-    transform: translate(0, 20px);
     transition: all 0.3s ease;
 }
 
 .bottomExplore1, .bottomExplore2, .bottomExplore3, .bottomExplore4{
-    position: absolute;
-    transform: translate(95px, 38px);
     text-align: center;
     width: 150px;
     padding: 10px;
@@ -459,67 +476,11 @@ header h1 {
     color: black;
 }
 
-.bottomExplore1 {
-    transform: translate(95px, 35px);
-}
-
-.bottomExplore3 {
-    transform: translate(95px, 55px);
-}
-
-.bottomExplore4 {
-    transform: translate(95px, 65px);
-}
-
-@media (max-width: 799px) {
-    .bottomExplore1, .bottomExplore2, .bottomExplore3{
-        transform: translate(0, 0);
-        margin-top: 30px;
-        margin-left: 95px;
-    }
-}
-
 .animationForProjects {
     transform: translate(0, 0);
     opacity: 1;
     filter: blur(0);
     transition: all 0.5s ease;
-}
-
-@media (max-width: 354px) {
-    .containerImages {
-        width: 270px;
-        height: 450px;
-    }
-    .image {
-        width: 220px;
-        height: 140px;
-    }
-    .containerImages p {
-        font-size: 85%;
-    }
-    .containerImage1 h1 {
-        transform: translate(0, 10px);
-    }
-    .containerImage1 p {
-        transform: translate(0, -3px);
-    }
-    .containerImage2 p {
-        transform: translate(0px, 8px);
-    }
-
-    .bottomExplore1{
-        transform: translate(-37px, -20px);
-    }
-    .bottomExplore2{
-        transform: translate(-40px, -20px);
-    }
-    .bottomExplore3{
-        transform: translate(-40px, 10px);
-    }
-    .bottomExplore4 {
-        transform: translate(60px, 35px);
-    }
 }
 
 
@@ -685,6 +646,7 @@ label {
     .containerContact {
         opacity: 0;
         filter: blur(0);
+        transform: translate(0, 0);
     }
 
     .opacityContact {
@@ -716,7 +678,7 @@ label {
 @media (max-width: 540px) {
     .containerContact {
         justify-content: unset !important;
-        margin-left: 30px;
+        margin-left: 0;
     }
     .contactHeading {
         width: 100vw;
@@ -738,6 +700,18 @@ label {
     .contactMeText {
         transform: translate(0, -20px);
     }
+}
+
+@media (max-width: 244px) {
+    .contactMeText{
+        font-size: 150%;
+    }
+
+    .getInTouch {
+        transform: translate(30px, 30px);
+        font-size: 70%;
+    }
+
 }
 
 .opacity {
