@@ -67,7 +67,7 @@ body::-webkit-scrollbar {
     user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;  
-    /* animation: firstSceneAnimation 2s ease forwards; */
+    animation: firstSceneAnimation 2s ease forwards;
     animation-delay: 2.5s;
 }
 
