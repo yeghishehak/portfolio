@@ -63,12 +63,11 @@ body::-webkit-scrollbar {
     width: 100vw;
     overflow: hidden;
     background-color: black;
-    transform-origin: -600px;
     z-index: 1000;
     user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;  
-    animation: firstSceneAnimation 2s ease forwards;
+    /* animation: firstSceneAnimation 2s ease forwards; */
     animation-delay: 2.5s;
 }
 
@@ -108,15 +107,27 @@ body::-webkit-scrollbar {
     -ms-user-select: none;   
 }
 
-@media (max-width: 416px) {
+@media (max-width: 836px) {
     .firstScene h1 {
         font-size: 120%;
+    }
+}
+
+@media (max-width: 576px) {
+    .firstScene h1 {
+        font-size: 100%;
     }
 }
 
 @media (max-width: 328px) {
     .firstScene h1 {
         font-size: 80%;
+    }
+}
+
+@media (max-width: 264px) {
+    .firstScene h1 {
+        font-size: 60%;
     }
 }
 
