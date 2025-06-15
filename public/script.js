@@ -2,16 +2,23 @@ document.addEventListener('dblclick', function (e) {
   e.preventDefault();
 });
 
-// Always reset horizontal scroll
-// window.scrollTo({ left: 0 });
 
-// window.addEventListener('scroll', () => {
-//   if (window.scrollX !== 0) {
-//     window.scrollTo({ 
-//         left: 0, 
-//     });
-//   }
-// });
+document.querySelector('.firstScene').addEventListener('animationend', () => {
+  setTimeout(() => {
+    document.documentElement.style.overflowY = 'auto';
+  }, 1000); // 500 milliseconds = 0.5 seconds
+});
+
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+// Always scroll to top when page loads
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+  }, 0);
+});
 
 
 const home = document.querySelector(".home");
