@@ -74,6 +74,7 @@ header {
     -ms-user-select: none;  
     animation: firstSceneAnimation 2s ease forwards;
     animation-delay: 2.5s;
+    overflow: hidden;
 }
 
 .mask {
