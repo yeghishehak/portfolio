@@ -3,10 +3,17 @@ document.addEventListener('dblclick', function (e) {
 });
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    document.querySelector('.all').style.display = "block"; // this will allow scrolling AFTER the first animation
+  }, 2300);
+});
+
+
 document.querySelector('.firstScene').addEventListener('animationend', () => {
   setTimeout(() => {
     document.documentElement.style.overflowY = 'auto';
-  }, 1000); // 500 milliseconds = 0.5 seconds
+  }, 1000);
 });
 
 if ('scrollRestoration' in history) {

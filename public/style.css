@@ -2,10 +2,6 @@ html, body{
     overflow-x: hidden;
 }
 
-html {
-    overflow-y: hidden; /*so users can't scroll during the animation */
-}
-
 body{
     min-height: 100vh !important;
     width: 100vw;
@@ -20,10 +16,19 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-.all, header {
+.all {
   opacity: 0;
   animation: fadeInAll 2s ease forwards;
-  animation-delay: 2.4s;
+}
+
+header {
+    opacity: 0;
+    animation: fadeInAll 2s ease forwards;
+    animation-delay: 2.3s;
+}
+
+.all {
+    display: none; /* this will prevent scrolling during first animation*/
 }
 
 @keyframes fadeInAll {
