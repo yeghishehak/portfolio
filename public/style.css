@@ -20,7 +20,7 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-.all {
+.all, header {
   opacity: 0;
   animation: fadeInAll 2s ease forwards;
   animation-delay: 2.4s;
