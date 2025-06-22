@@ -6,7 +6,7 @@ document.addEventListener('dblclick', function (e) {
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     document.querySelector('.all').style.display = "block"; // this will allow scrolling AFTER the first animation
-  }, 2300);
+  }, 2500);
 });
 
 
