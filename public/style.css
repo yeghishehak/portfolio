@@ -538,7 +538,7 @@ header h1 {
 }
 
 
-.containerImage1, .containerImage2, .containerImage3, .containerImage4 {
+.containerImage1, .containerImage2, .containerImage3, .containerImage4, .containerImage5 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -584,7 +584,13 @@ header h1 {
     transition: all 0.3s ease;
 }
 
-.bottomExplore1, .bottomExplore2, .bottomExplore3, .bottomExplore4{
+@media (max-width: 344px) {
+    .GT2 {
+        font-size: 80% !important;
+    }
+}
+
+.bottomExplore1, .bottomExplore2, .bottomExplore3, .bottomExplore4, .bottomExplore5 {
     text-align: center;
     width: 150px;
     padding: 10px;
