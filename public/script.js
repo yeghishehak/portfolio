@@ -2,36 +2,20 @@ document.addEventListener('dblclick', function (e) {
   e.preventDefault();
 });
 
-function startAnimations() {
-  // Show main content after animation
   setTimeout(() => {
-    document.querySelector('.all').style.display = "block";
+    document.querySelector('.all').style.display = "block"; // this will allow scrolling AFTER the first animation
   }, 5500);
 
-  // Enable scroll after first scene animation
-  document.querySelector('.firstScene').addEventListener('animationend', () => {
-    setTimeout(() => {
-      document.documentElement.style.overflowY = 'auto';
-    }, 1000);
-  });
-}
 
-// Run animations only when user *actually opens* the page
-if (document.visibilityState === 'visible') {
-  startAnimations();
-} else {
-  document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible') {
-      startAnimations();
-    }
-  });
-}
+document.querySelector('.firstScene').addEventListener('animationend', () => {
+  setTimeout(() => {
+    document.documentElement.style.overflowY = 'auto';
+  }, 1000);
+});
 
-// Prevent auto scroll on refresh
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
-
 
 // Always scroll to top when page loads
 window.addEventListener('load', () => {
