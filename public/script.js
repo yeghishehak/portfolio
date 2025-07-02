@@ -6,22 +6,16 @@ document.addEventListener('dblclick', function (e) {
 setTimeout(() => {
 const preloader = document.getElementById("preloader");
 const content = document.getElementById("main-content");
-
-// Start fade-out
 preloader.classList.add("fade-out");
 
-// After fade transition ends (0.8s), hide completely
 preloader.addEventListener("transitionend", () => {
     preloader.style.display = "none";
 
-    // Show content smoothly
     content.classList.remove("hidden");
     content.classList.add("show");
 
-    // Allow scrolling
-    document.body.classList.add("loaded");
-}, { once: true }); // only run once
-}, 2000); // loader duration
+}, { once: true });
+}, 2000); 
 
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
