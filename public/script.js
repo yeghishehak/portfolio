@@ -2,21 +2,6 @@ document.addEventListener('dblclick', function (e) {
   e.preventDefault();
 });
 
-
-setTimeout(() => {
-const preloader = document.getElementById("preloader");
-const content = document.getElementById("main-content");
-preloader.classList.add("fade-out");
-
-preloader.addEventListener("transitionend", () => {
-    preloader.style.display = "none";
-
-    content.classList.remove("hidden");
-    content.classList.add("show");
-
-}, { once: true });
-}, 2000); 
-
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     document.querySelector('.all').style.display = "block"; // this will allow scrolling AFTER the first animation
