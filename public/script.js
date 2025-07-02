@@ -2,11 +2,9 @@ document.addEventListener('dblclick', function (e) {
   e.preventDefault();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     document.querySelector('.all').style.display = "block"; // this will allow scrolling AFTER the first animation
   }, 5500);
-});
 
 
 document.querySelector('.firstScene').addEventListener('animationend', () => {
