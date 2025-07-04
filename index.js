@@ -55,7 +55,7 @@ app.post('/submit', async (req, res) => {
 
   // Very basic email format validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(userEmail)) {
+  if (!emailRegex.test(rawEmail)) {
     return res.status(400).send('Invalid email address.');
   }
 
