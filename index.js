@@ -14,8 +14,6 @@ const app = express();
 const PORT = process.env.PORT || 5553;
 
 // Middleware
-app.set('trust proxy', 1);
-app.use(limiter);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.join(__dirname, 'Images')));
 app.use(express.urlencoded({ extended: true }));
@@ -27,6 +25,8 @@ const limiter = rateLimit({
   max: 10, // Max 10 requests per minute per IP
   message: 'Too many requests, please try again later.',
 });
+
+app.set('trust proxy', 1);
 app.use(limiter);
 
 // MongoDB connection
