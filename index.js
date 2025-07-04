@@ -1,88 +1,120 @@
-const User = require('./User');
-const mongoose = require('mongoose');
 const express = require('express');
+const mongoose = require('mongoose');
 const path = require('path');
-require('dotenv').config();
-
 const nodemailer = require('nodemailer');
+const dotenv = require('dotenv');
+const xss = require('xss');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+const User = require('./User');
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5553;
 
-app.use(express.static(path.join(__dirname, './public')));
-
-app.use('/images', express.static(path.join(__dirname, './Images')));
-
+// Middleware
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/images', express.static(path.join(__dirname, 'Images')));
 app.use(express.urlencoded({ extended: true }));
+app.use(helmet()); // Set secure headers
 
+// Rate limiting to prevent abuse
+const limiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 10, // Max 10 requests per minute per IP
+  message: 'Too many requests, please try again later.',
+});
+app.use(limiter);
+
+// MongoDB connection
 mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-    .then(() => console.log('Connected to MongoDB Atlas'))
-    .catch((err) => console.error('Error connecting to MongoDB:', err));
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log('Connected to MongoDB Atlas'))
+.catch((err) => console.error('MongoDB connection error:', err));
 
+// Serve resume file
 app.get('/resume', (req, res) => {
-    res.sendFile(path.join(__dirname, 'Yeghishe\'s Resume For Website.pdf'));
+  res.sendFile(path.join(__dirname, 'Yeghishe\'s Resume For Website.pdf'));
 });
 
+// Handle form submission
 app.post('/submit', async (req, res) => {
-    const userName = req.body.username;
-    const userEmail = req.body.email;
-    const userMessage = req.body.message;
+  // Sanitize input
+  const rawName = xss(req.body.username?.trim());
+  const rawEmail = xss(req.body.email?.trim());
+  const rawMessage = xss(req.body.message?.trim());
 
-    console.log("Name: ", userName);
-    console.log("Email: ", userEmail);
-    console.log("Message: ", userMessage);
-    
-    try {
-    const user = await User.create({
-        name: userName,
-        email: userEmail,
-        message: userMessage
-    });
+  if (!rawName || !rawEmail || !rawMessage) {
+    return res.status(400).send('All fields are required.');
+  }
 
-    console.log('Message sent to database successfully');
+  // Very basic email format validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(userEmail)) {
+    return res.status(400).send('Invalid email address.');
+  }
+
+  function escapeHTML(str) {
+    return str
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  const userName = escapeHTML(rawName);
+  const userEmail = escapeHTML(rawEmail);
+  const userMessage = escapeHTML(rawMessage);
+
+  try {
+    await User.create({ name: userName, email: userEmail, message: userMessage });
+    console.log('Message saved to database');
 
     const transporter = nodemailer.createTransport({
-        service: 'gmail', // SMTP server for Mail.ru
-        auth: {
-          user: process.env.EMAIL,
-          pass: process.env.PASSWORD,
-        },
-      });
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD,
+      },
+    });
 
-        await transporter.sendMail ({
-            from: process.env.EMAIL,
-            to: process.env.EMAIL,
-            subject: 'Message from portfolio',
-            html: 
-            `<h1>Someone sent you a message from "Yeghishe's Portfolio".</h1> 
-            <p>Name: <b>${userName}</b>, <br> Email: <b>${userEmail}</b>, <br> Message: <b>${userMessage}</b></p>`
-        })
+    await transporter.sendMail({
+      from: `"Yeghishe's Portfolio" <${process.env.EMAIL}>`,
+      to: process.env.EMAIL,
+      subject: 'Message from portfolio',
+      html: `
+        <h2>New message from portfolio</h2>
+        <p><strong>Name:</strong> ${userName}</p>
+        <p><strong>Email:</strong> ${userEmail}</p>
+        <p><strong>Message:</strong><br>${userMessage}</p>
+      `,
+    });
+
     res.redirect('/');
-} 
-catch (error) {
-        console.log(error.message);
-        res.write("email can't be duplicated");
-        res.end();
+  } catch (error) {
+    console.error('Submission error:', error.message);
+    if (error.code === 11000) {
+      return res.status(409).send('Duplicate email not allowed.');
     }
+    res.status(500).send('Something went wrong.');
+  }
 });
 
+// Serve homepage
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', './index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// fetch('http://localhost:5000/')  
-//   .then(response => response.text())  // Convert response to text (HTML)
-//   .then(data => console.log("Received HTML:", data))  // Log the HTML content
-//   .catch(error => console.log("Fetch error:", error));
-
-
+// Catch-all route
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'wrongpage.html'));
+  res.sendFile(path.join(__dirname, 'public', 'wrongpage.html'));
 });
 
+// Start server
 app.listen(PORT, () => {
-    console.log(`Server is running on port http://localhost:${PORT}/`);
+  console.log(`Server is running at http://localhost:${PORT}/`);
 });
