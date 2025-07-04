@@ -14,6 +14,8 @@ const app = express();
 const PORT = process.env.PORT || 5553;
 
 // Middleware
+app.set('trust proxy', 1);
+app.use(limiter);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.join(__dirname, 'Images')));
 app.use(express.urlencoded({ extended: true }));
