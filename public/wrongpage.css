@@ -1,0 +1,92 @@
+body {
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+}
+
+div {
+    transform: translate(0, -10px);
+}
+
+h1 {
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 450%;
+    color: white;
+}
+
+p {
+    font-family: "Archivo Black", sans-serif;
+    font-size: 150%;
+    color: #ccc;
+    transform: translate(0, -30px);
+}
+
+button {
+    outline: none;
+    border: none;
+    background-color: #636363;
+    border-radius: 10px;
+    height: 50px;
+    width: 180px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #161616;
+    box-shadow: 0px 0px 20px black;
+}
+
+button:hover span {
+    font-size: 150%;
+}
+
+button:active {
+    background-color: #161616;
+    box-shadow: 0px 0px 20px black;
+}
+
+button:active span {
+    font-size: 150%;
+}
+
+span {
+    background: linear-gradient(var(--angle), #ff0000, #ff7300, #fffb00);
+    font-weight: 700;
+    font-size: 140%;
+    background-clip: text;
+    color: transparent;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    animation: rotate-gradient 10s linear infinite;
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes rotate-gradient {
+    0% {
+        --angle: 0deg;
+    }
+    100% {
+        --angle: 360deg;
+    }
+}
+
+@media (max-width: 514px) {
+    h1 {
+        font-size: 350%;
+    }
+    p {
+        font-size: 120%;
+    }
+}
