@@ -652,7 +652,7 @@ header h1 {
     }
 }
 
-.buttonsDiv1 {
+.buttonsDiv1, .buttonsDiv2 {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -672,11 +672,11 @@ header h1 {
     color: black;
 }
 
-.figmaLink1 {
+.figmaLink1, .figmaLink2 {
     all: unset;
 }
 
-.figmaExplore1 {
+.figmaExplore1, .figmaExplore2 {
     margin-bottom: 10px;
     border: none;
     outline: none;
@@ -702,7 +702,7 @@ header h1 {
     transform: translate(10px, -2px);
 }
 
-.figmaExplore1:hover .arrowRight {
+.figmaExplore1:hover .arrowRight, .figmaExplore2:hover .arrowRight {
     fill: white;
 }
 
